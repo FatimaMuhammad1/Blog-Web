@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  DRIFT JOURNAL - Design System
+  A curated journal for the curious mind
+  Colors: Deep teal + warm terracotta + cream
+  All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core palette - Warm cream with teal accents */
+    --background: 45 30% 97%;
+    --foreground: 180 15% 15%;
+
+    --card: 45 25% 94%;
+    --card-foreground: 180 15% 15%;
+
+    --popover: 45 30% 97%;
+    --popover-foreground: 180 15% 15%;
+
+    /* Primary: Deep teal */
+    --primary: 175 45% 28%;
+    --primary-foreground: 45 30% 97%;
+
+    /* Secondary: Warm terracotta */
+    --secondary: 18 55% 62%;
+    --secondary-foreground: 180 15% 15%;
+
+    --muted: 45 20% 90%;
+    --muted-foreground: 180 10% 45%;
+
+    /* Accent: Sage green */
+    --accent: 145 25% 45%;
+    --accent-foreground: 45 30% 97%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 45 30% 97%;
+
+    --border: 45 15% 85%;
+    --input: 45 15% 85%;
+    --ring: 175 45% 28%;
+
+    --radius: 1.25rem;
+
+    /* Category tags - earthy tones */
+    --tag-mindset: 175 40% 75%;
+    --tag-craft: 18 50% 72%;
+    --tag-places: 145 30% 70%;
+    --tag-rituals: 280 25% 75%;
+    --tag-stories: 45 45% 72%;
+    --tag-ideas: 200 40% 75%;
+
+    /* Polish tokens */
+    --cream: 45 35% 92%;
+    --cream-foreground: 180 15% 15%;
+    --surface-elevated: 45 30% 99%;
+    --shadow-soft: 180 20% 20%;
+    --glow-primary: 175 45% 28%;
+  }
+
+  .dark {
+    --background: 180 15% 8%;
+    --foreground: 45 25% 92%;
+
+    --card: 180 12% 12%;
+    --card-foreground: 45 25% 92%;
+
+    --popover: 180 15% 8%;
+    --popover-foreground: 45 25% 92%;
+
+    --primary: 175 50% 45%;
+    --primary-foreground: 180 15% 8%;
+
+    --secondary: 18 45% 50%;
+    --secondary-foreground: 45 25% 92%;
+
+    --muted: 180 10% 18%;
+    --muted-foreground: 45 15% 60%;
+
+    --accent: 145 30% 50%;
+    --accent-foreground: 180 15% 8%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 45 25% 92%;
+
+    --border: 180 10% 20%;
+    --input: 180 10% 20%;
+    --ring: 175 50% 45%;
+
+    /* Dark mode tags */
+    --tag-mindset: 175 35% 35%;
+    --tag-craft: 18 40% 40%;
+    --tag-places: 145 25% 38%;
+    --tag-rituals: 280 20% 40%;
+    --tag-stories: 45 35% 42%;
+    --tag-ideas: 200 35% 40%;
+
+    /* Dark polish tokens */
+    --cream: 180 10% 18%;
+    --cream-foreground: 45 25% 92%;
+    --surface-elevated: 180 12% 14%;
+    --shadow-soft: 0 0% 0%;
+    --glow-primary: 175 50% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+@layer utilities {
+  .card-hover {
+    @apply transition-all duration-500 hover:scale-[1.02];
+    box-shadow: 0 4px 20px -4px hsl(var(--shadow-soft) / 0.08);
+  }
+
+  .card-hover:hover {
+    box-shadow: 0 24px 48px -12px hsl(var(--shadow-soft) / 0.15);
+  }
+
+  .pill-nav {
+    @apply rounded-full bg-[hsl(var(--surface-elevated)/0.9)] backdrop-blur-xl border border-border/40;
+    box-shadow: 0 4px 24px -8px hsl(var(--shadow-soft) / 0.1);
+  }
+
+  .floating-button {
+    @apply w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground hover:scale-110 transition-all duration-300;
+    box-shadow: 0 8px 24px -4px hsl(var(--glow-primary) / 0.4);
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 60px -12px hsl(var(--glow-primary) / 0.3);
+  }
+
+  /* Animation keyframes */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.7s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.7s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  /* Stagger animations */
+  .stagger-1 { animation-delay: 0.1s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-2 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-3 { animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-4 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-5 { animation-delay: 0.5s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-6 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
+
+  /* Category tags */
+  .tag-mindset { @apply bg-[hsl(var(--tag-mindset))] text-primary; }
+  .tag-craft { @apply bg-[hsl(var(--tag-craft))] text-primary; }
+  .tag-places { @apply bg-[hsl(var(--tag-places))] text-primary; }
+  .tag-rituals { @apply bg-[hsl(var(--tag-rituals))] text-primary; }
+  .tag-stories { @apply bg-[hsl(var(--tag-stories))] text-primary; }
+  .tag-ideas { @apply bg-[hsl(var(--tag-ideas))] text-primary; }
+
+  /* Legacy tag support */
+  .tag-financing { @apply bg-[hsl(var(--tag-mindset))] text-primary; }
+  .tag-lifestyle { @apply bg-[hsl(var(--tag-craft))] text-primary; }
+  .tag-community { @apply bg-[hsl(var(--tag-stories))] text-primary; }
+  .tag-wellness { @apply bg-[hsl(var(--tag-rituals))] text-primary; }
+  .tag-travel { @apply bg-[hsl(var(--tag-places))] text-primary; }
+  .tag-creativity { @apply bg-[hsl(var(--tag-craft))] text-primary; }
+  .tag-growth { @apply bg-[hsl(var(--tag-ideas))] text-primary; }
+
+  /* Decorative elements */
+  .blob-shape {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+}
