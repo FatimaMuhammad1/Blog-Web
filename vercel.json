@@ -1,25 +1,8 @@
 {
-  "builds": [
+  "rewrites": [
     {
-      "src": "app/main.py",
-      "use": "@vercel/python"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "app/main.py",
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS, PATCH",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        "Access-Control-Expose-Headers": "Content-Length, Content-Range",
-        "Access-Control-Allow-Credentials": "true"
-      }
-    }
-  ],
-  "env": {
-    "ENVIRONMENT": "production",
-    "DEBUG": "false"
-  }
+  ]
 }
